@@ -1,0 +1,112 @@
+// Copyright (C) 1991-2010 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "08/20/2018 16:56:11"
+                                                                                
+// Verilog Test Bench template for design : Crossbar
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 100 ps
+module Crossbar_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg clk;
+reg [31:0] master_1_addr;
+reg master_1_cmd;
+reg master_1_req;
+reg [31:0] master_1_wdata;
+reg [31:0] master_2_addr;
+reg master_2_cmd;
+reg master_2_req;
+reg [31:0] master_2_wdata;
+reg slave_1_ack;
+reg [31:0] slave_1_rdata;
+reg slave_2_ack;
+reg [31:0] slave_2_rdata;
+// wires                                               
+wire master_1_ack;
+wire [31:0]  master_1_rdata;
+wire master_2_ack;
+wire [31:0]  master_2_rdata;
+wire [31:0]  slave_1_addr;
+wire slave_1_cmd;
+wire [31:0]  slave_1_wdata;
+wire [31:0]  slave_2_addr;
+wire slave_2_cmd;
+wire [31:0]  slave_2_wdata;
+
+// assign statements (if any)                          
+Crossbar i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.master_1_ack(master_1_ack),
+	.master_1_addr(master_1_addr),
+	.master_1_cmd(master_1_cmd),
+	.master_1_rdata(master_1_rdata),
+	.master_1_req(master_1_req),
+	.master_1_wdata(master_1_wdata),
+	.master_2_ack(master_2_ack),
+	.master_2_addr(master_2_addr),
+	.master_2_cmd(master_2_cmd),
+	.master_2_rdata(master_2_rdata),
+	.master_2_req(master_2_req),
+	.master_2_wdata(master_2_wdata),
+	.slave_1_ack(slave_1_ack),
+	.slave_1_addr(slave_1_addr),
+	.slave_1_cmd(slave_1_cmd),
+	.slave_1_rdata(slave_1_rdata),
+	.slave_1_wdata(slave_1_wdata),
+	.slave_2_ack(slave_2_ack),
+	.slave_2_addr(slave_2_addr),
+	.slave_2_cmd(slave_2_cmd),
+	.slave_2_rdata(slave_2_rdata),
+	.slave_2_wdata(slave_2_wdata)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+    clk = 0;                                                   
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin
+    #10 clk = ~clk;
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+
+event terminate;
+initial begin:
+	@ (terminate);
+	#5 $stop;
+end
+
+
+

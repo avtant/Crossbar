@@ -1,0 +1,143 @@
+// Copyright (C) 1991-2010 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "08/24/2018 08:07:39"
+                                                                                
+// Verilog Test Bench template for design : Crossbar
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 100 ps
+module Crossbar_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg clk;
+reg[1:0] master_req;
+reg[1:0] master_cmd;
+reg[1:0] slave_ack;
+reg[31:0] master_addr [1:0];
+reg[31:0] master_wdata [1:0];
+reg[31:0] slave_rdata [1:0];
+// wires                                               
+wire[1:0] master_ack;
+wire[1:0] slave_cmd;
+wire[31:0] master_rdata[1:0];
+wire[31:0] slave_addr[1:0];
+wire[31:0] slave_wdata[1:0];
+
+// assign statements (if any)                          
+Crossbar i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.master_req(master_req),
+	.master_cmd(master_cmd),
+	.slave_ack(slave_ack),
+	.master_addr(master_addr),
+	.master_wdata(master_wdata),
+	.slave_rdata(slave_rdata),
+	.master_ack(master_ack),
+	.slave_cmd(slave_cmd),
+	.master_rdata(master_rdata),
+	.slave_addr(slave_addr),
+	.slave_wdata(slave_wdata)	
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+    clk = 0;                                                   
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+    #10
+	clk = !clk;
+//@eachvec;                                              
+// --> end                                             
+end
+
+initial //first-to-first write
+begin
+	#15
+	master_req = 2'b01;
+	master_addr[0] = 32'h0000ABCD;
+	master_cmd = 2'b01;
+	master_wdata[0] = 32'h1234EF78;
+	@(negedge clk);
+	@(posedge clk);
+	#5
+	slave_ack = 2'b01;
+	@(negedge clk);
+	master_addr[0] = 32'h0;
+	master_cmd = 2'b00;
+	master_wdata[0] = 32'h0;
+end
+
+initial //first-to-second read
+begin
+	#100
+	master_req = 2'b01;
+	master_addr[0] = 32'hCD568902;
+	master_cmd = 2'b00;
+	@(negedge clk);
+	#5
+	slave_ack = 2'b10;
+	@(negedge clk);
+	slave_rdata[1] = 32'h91827364;
+end
+
+initial //each-to-each write
+begin
+	#200
+	master_req = 2'b11;
+	master_addr[0] = 32'h7354829D;
+	master_addr[1] = 32'hCE658934;
+	master_cmd = 2'b11;
+	master_wdata[0] = 32'h45454545;
+	master_wdata[1] = 32'h90909090;
+	@(negedge clk);
+	#5
+	slave_ack = 2'b11;
+end
+
+initial //each-to-first read
+begin
+	#300
+	master_req = 2'b11;
+	master_addr[0] = 32'h12345678;
+	master_addr[1] = 32'h12345678;
+	master_cmd = 2'b00;
+	@(negedge clk);
+	#5
+	slave_ack = 2'b11;
+	@(negedge clk);
+	slave_rdata[0] = 32'hDEFCDEFC;
+	slave_rdata[1] = 32'h72357352;
+end
+    
+endmodule
+
