@@ -3404,3 +3404,10 @@ vlog -reportprogress 300 -work work C:/Projects/QuartusProjects/Crossbar/simulat
 # Top level modules:
 # 	Crossbar_vlg_tst
 restart -f
+# Loading sv_std.std
+# Loading work.Crossbar_vlg_tst
+# Loading work.Crossbar
+# ** Warning: (vsim-3009) [TSCALE] - Module 'Crossbar' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /Crossbar_vlg_tst/i1
+run
+# Running testbench

@@ -26,23 +26,24 @@
 
 `timescale 1 ns/ 100 ps
 module Crossbar_vlg_tst();
-// constants                                           
+// constants
+parameter count = 2;
 // general purpose registers
 reg eachvec;
 // test vector input registers
 reg clk;
-reg[1:0] master_req;
-reg[1:0] master_cmd;
-reg[1:0] slave_ack;
-reg[31:0] master_addr [1:0];
-reg[31:0] master_wdata [1:0];
-reg[31:0] slave_rdata [1:0];
+reg master_req [count - 1:0];
+reg master_cmd [count - 1:0];
+reg slave_ack [count - 1:0];
+reg[31:0] master_addr [count - 1:0];
+reg[31:0] master_wdata [count - 1:0];
+reg[31:0] slave_rdata [count - 1:0];
 // wires                                               
-wire[1:0] master_ack;
-wire[1:0] slave_cmd;
-wire[31:0] master_rdata[1:0];
-wire[31:0] slave_addr[1:0];
-wire[31:0] slave_wdata[1:0];
+wire master_ack [count - 1:0];
+wire slave_cmd [count - 1:0];
+wire[31:0] master_rdata [count - 1:0];
+wire[31:0] slave_addr [count - 1:0];
+wire[31:0] slave_wdata [count - 1:0];
 
 // assign statements (if any)                          
 Crossbar i1 (
@@ -83,60 +84,98 @@ end
 initial //first-to-first write
 begin
 	#15
-	master_req = 2'b01;
+	master_req[0] = 1;
 	master_addr[0] = 32'h0000ABCD;
-	master_cmd = 2'b01;
+	master_cmd[0] = 1;
 	master_wdata[0] = 32'h1234EF78;
 	@(negedge clk);
 	@(posedge clk);
 	#5
-	slave_ack = 2'b01;
+	slave_ack[0] = 1;
 	@(negedge clk);
-	master_addr[0] = 32'h0;
-	master_cmd = 2'b00;
-	master_wdata[0] = 32'h0;
+	@(posedge clk);
+	master_req[0] = 1'bZ;
+	master_addr[0] = 32'hZ;
+	master_cmd[0] = 1'bZ;
+	master_wdata[0] = 32'hZ;
+	@(negedge clk);
+	slave_ack[0] = 1'bZ;
+	
 end
 
 initial //first-to-second read
 begin
 	#100
-	master_req = 2'b01;
+	master_req[0] = 1;
 	master_addr[0] = 32'hCD568902;
-	master_cmd = 2'b00;
+	master_cmd[0] = 0;
 	@(negedge clk);
-	#5
-	slave_ack = 2'b10;
+	@(negedge clk);
+	slave_ack[1] = 1;
 	@(negedge clk);
 	slave_rdata[1] = 32'h91827364;
+	@(negedge clk);
+	master_req[0] = 1'bZ;
+	master_addr[0] = 32'hZ;
+	master_cmd[0] = 1'bZ;
+	slave_ack[1] = 1'bZ;
+	slave_rdata[1] = 32'hZ;
 end
 
 initial //each-to-each write
 begin
 	#200
-	master_req = 2'b11;
+	master_req[0] = 1;
+	master_req[1] = 1;
 	master_addr[0] = 32'h7354829D;
 	master_addr[1] = 32'hCE658934;
-	master_cmd = 2'b11;
+	master_cmd[0] = 1;
+	master_cmd[1] = 1;
 	master_wdata[0] = 32'h45454545;
 	master_wdata[1] = 32'h90909090;
 	@(negedge clk);
-	#5
-	slave_ack = 2'b11;
+	@(negedge clk);
+	slave_ack[0] = 1;
+	slave_ack[1] = 1;
+	@(negedge clk);
+	master_req[0] = 1'bZ;
+	master_req[1] = 1'bZ;
+	master_addr[0] = 32'hZ;
+	master_addr[1] = 32'hZ;
+	master_cmd[0] = 1'bZ;
+	master_cmd[1] = 1'bZ;
+	slave_ack[0] = 1'bZ;
+	slave_ack[1] = 1'bZ;
 end
 
 initial //each-to-first read
 begin
 	#300
-	master_req = 2'b11;
+	master_req[0] = 1;
+	master_req[1] = 1;
 	master_addr[0] = 32'h12345678;
 	master_addr[1] = 32'h12345678;
-	master_cmd = 2'b00;
+	master_cmd[0] = 0;
+	master_cmd[1] = 0;
 	@(negedge clk);
-	#5
-	slave_ack = 2'b11;
+	@(negedge clk);
+	slave_ack[0] = 1;
+	slave_ack[1] = 1;
 	@(negedge clk);
 	slave_rdata[0] = 32'hDEFCDEFC;
 	slave_rdata[1] = 32'h72357352;
+	@(negedge clk);
+	master_req[0] = 1'bZ;
+	master_req[1] = 1'bZ;
+	master_addr[0] = 32'hZ;
+	master_addr[1] = 32'hZ;
+	master_cmd[0] = 1'bZ;
+	master_cmd[1] = 1'bZ;
+	#30
+	slave_ack[0] = 1'bZ;
+	slave_ack[1] = 1'bZ;
+	slave_rdata[0] = 32'hZ;
+	slave_rdata[1] = 32'hZ;
 end
     
 endmodule

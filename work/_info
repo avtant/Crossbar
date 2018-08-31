@@ -1,0 +1,43 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Projects\QuartusProjects\Crossbar
+vCrossbar
+Z1 Mx1 6 sv_std 3 std
+Z2 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+!s100 Y6G=aahoEBd>DaG[d`H8Q1
+IYWo;mjY9KR9P^JC6AeOMh3
+V0?AH8KcOXW>@cIj@1Y6Qc0
+S1
+w1535693318
+8C:/Projects/QuartusProjects/Crossbar/Crossbar.v
+FC:/Projects/QuartusProjects/Crossbar/Crossbar.v
+L0 1
+Z3 OV;L;6.5b;42
+r1
+!s85 0
+31
+!s101 -O0
+Z4 o-work work -O0
+Z5 tSvlog 1 CoverFEC 0 CoverShortCircuit 0
+n@crossbar
+vCrossbar_vlg_tst
+R1
+R2
+IHhXP=4NaCzm0`^`eYn<?P2
+VdVDS0]fL`2bAfCFl5z98a3
+S1
+w1535692094
+8C:/Projects/QuartusProjects/Crossbar/simulation/modelsim/Crossbar.vt
+FC:/Projects/QuartusProjects/Crossbar/simulation/modelsim/Crossbar.vt
+L0 28
+R3
+r1
+31
+R4
+R5
+n@crossbar_vlg_tst
+!s100 <EQn?TCRj?U>KIj14^EVT2
+!s85 0
+!s101 -O0

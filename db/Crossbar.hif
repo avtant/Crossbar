@@ -31,7 +31,7 @@ ON
 # case_sensitive
 # source_file
 crossbar.v
-83ddeacabdef7c5afddba1d0d573c0d8
+349a9fd464db58fa123d867e9128252
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -48,6 +48,12 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
+}
+# user_parameter {
+count
+2
+PARAMETER_SIGNED_DEC
+DEF
 }
 # hierarchies {
 |

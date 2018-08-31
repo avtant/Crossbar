@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Crossbar
-Fri Aug 24 10:27:01 2018
+Fri Aug 31 08:28:57 2018
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -17,8 +17,9 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   9. Removed Registers Triggering Further Register Optimizations
  10. General Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Analysis & Synthesis Messages
- 13. Analysis & Synthesis Suppressed Messages
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |Crossbar
+ 13. Analysis & Synthesis Messages
+ 14. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -44,15 +45,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Aug 24 10:27:01 2018        ;
+; Analysis & Synthesis Status        ; Successful - Fri Aug 31 08:28:56 2018        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; Crossbar                                     ;
 ; Top-level Entity Name              ; Crossbar                                     ;
 ; Family                             ; Cyclone IV E                                 ;
-; Total logic elements               ; 539                                          ;
-;     Total combinational functions  ; 442                                          ;
-;     Dedicated logic registers      ; 344                                          ;
-; Total registers                    ; 344                                          ;
+; Total logic elements               ; 351                                          ;
+;     Total combinational functions  ; 351                                          ;
+;     Dedicated logic registers      ; 203                                          ;
+; Total registers                    ; 203                                          ;
 ; Total pins                         ; 395                                          ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
@@ -171,27 +172,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 539       ;
+; Estimated Total logic elements              ; 351       ;
 ;                                             ;           ;
-; Total combinational functions               ; 442       ;
+; Total combinational functions               ; 351       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 150       ;
-;     -- 3 input functions                    ; 277       ;
-;     -- <=2 input functions                  ; 15        ;
+;     -- 4 input functions                    ; 111       ;
+;     -- 3 input functions                    ; 231       ;
+;     -- <=2 input functions                  ; 9         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 442       ;
+;     -- normal mode                          ; 351       ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
-; Total registers                             ; 344       ;
-;     -- Dedicated logic registers            ; 344       ;
+; Total registers                             ; 203       ;
+;     -- Dedicated logic registers            ; 203       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 395       ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 344       ;
-; Total fan-out                               ; 3081      ;
-; Average fan-out                             ; 1.95      ;
+; Maximum fan-out                             ; 203       ;
+; Total fan-out                               ; 2342      ;
+; Average fan-out                             ; 1.74      ;
 +---------------------------------------------+-----------+
 
 
@@ -200,7 +201,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |Crossbar                  ; 442 (442)         ; 344 (344)    ; 0           ; 0            ; 0       ; 0         ; 395  ; 0            ; |Crossbar           ; work         ;
+; |Crossbar                  ; 351 (351)         ; 203 (203)    ; 0           ; 0            ; 0       ; 0         ; 395  ; 0            ; |Crossbar           ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -210,13 +211,69 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; pc[6..31]                              ; Stuck at GND due to stuck port data_in ;
-; pc2[10..31]                            ; Merged with pc2[9]                     ;
 ; rr[2..31]                              ; Merged with rr[1]                      ;
-; pc2[9]                                 ; Stuck at GND due to stuck port data_in ;
-; pc[2]                                  ; Merged with pc[4]                      ;
-; rr[1]                                  ; Lost fanout                            ;
-; Total Number of Removed Registers = 81 ;                                        ;
+; state[0][4]                            ; Merged with state[0][3]                ;
+; state[0][5]                            ; Merged with state[0][3]                ;
+; state[0][6]                            ; Merged with state[0][3]                ;
+; state[0][7]                            ; Merged with state[0][3]                ;
+; state[0][8]                            ; Merged with state[0][3]                ;
+; state[0][9]                            ; Merged with state[0][3]                ;
+; state[0][10]                           ; Merged with state[0][3]                ;
+; state[0][11]                           ; Merged with state[0][3]                ;
+; state[0][12]                           ; Merged with state[0][3]                ;
+; state[0][13]                           ; Merged with state[0][3]                ;
+; state[0][14]                           ; Merged with state[0][3]                ;
+; state[0][15]                           ; Merged with state[0][3]                ;
+; state[0][16]                           ; Merged with state[0][3]                ;
+; state[0][17]                           ; Merged with state[0][3]                ;
+; state[0][18]                           ; Merged with state[0][3]                ;
+; state[0][19]                           ; Merged with state[0][3]                ;
+; state[0][20]                           ; Merged with state[0][3]                ;
+; state[0][21]                           ; Merged with state[0][3]                ;
+; state[0][22]                           ; Merged with state[0][3]                ;
+; state[0][23]                           ; Merged with state[0][3]                ;
+; state[0][24]                           ; Merged with state[0][3]                ;
+; state[0][25]                           ; Merged with state[0][3]                ;
+; state[0][26]                           ; Merged with state[0][3]                ;
+; state[0][27]                           ; Merged with state[0][3]                ;
+; state[0][28]                           ; Merged with state[0][3]                ;
+; state[0][29]                           ; Merged with state[0][3]                ;
+; state[0][30]                           ; Merged with state[0][3]                ;
+; state[0][31]                           ; Merged with state[0][3]                ;
+; state[1][29]                           ; Merged with state[1][3]                ;
+; state[1][30]                           ; Merged with state[1][3]                ;
+; state[1][31]                           ; Merged with state[1][3]                ;
+; state[1][4]                            ; Merged with state[1][3]                ;
+; state[1][5]                            ; Merged with state[1][3]                ;
+; state[1][6]                            ; Merged with state[1][3]                ;
+; state[1][7]                            ; Merged with state[1][3]                ;
+; state[1][8]                            ; Merged with state[1][3]                ;
+; state[1][9]                            ; Merged with state[1][3]                ;
+; state[1][10]                           ; Merged with state[1][3]                ;
+; state[1][11]                           ; Merged with state[1][3]                ;
+; state[1][12]                           ; Merged with state[1][3]                ;
+; state[1][13]                           ; Merged with state[1][3]                ;
+; state[1][14]                           ; Merged with state[1][3]                ;
+; state[1][15]                           ; Merged with state[1][3]                ;
+; state[1][16]                           ; Merged with state[1][3]                ;
+; state[1][17]                           ; Merged with state[1][3]                ;
+; state[1][18]                           ; Merged with state[1][3]                ;
+; state[1][19]                           ; Merged with state[1][3]                ;
+; state[1][20]                           ; Merged with state[1][3]                ;
+; state[1][21]                           ; Merged with state[1][3]                ;
+; state[1][22]                           ; Merged with state[1][3]                ;
+; state[1][23]                           ; Merged with state[1][3]                ;
+; state[1][24]                           ; Merged with state[1][3]                ;
+; state[1][25]                           ; Merged with state[1][3]                ;
+; state[1][26]                           ; Merged with state[1][3]                ;
+; state[1][27]                           ; Merged with state[1][3]                ;
+; state[1][28]                           ; Merged with state[1][3]                ;
+; master_ack[0]~reg0                     ; Stuck at VCC due to stuck port data_in ;
+; master_ack[1]~reg0                     ; Stuck at VCC due to stuck port data_in ;
+; rr[1]                                  ; Stuck at GND due to stuck port data_in ;
+; slave_addr[1][31]~reg0                 ; Stuck at VCC due to stuck port data_in ;
+; state[0][3]                            ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 91 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -225,7 +282,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------+---------------------------+----------------------------------------+
 ; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
 +---------------+---------------------------+----------------------------------------+
-; pc[31]        ; Stuck at GND              ; pc2[9]                                 ;
+; rr[1]         ; Stuck at GND              ; slave_addr[1][31]~reg0, state[0][3]    ;
 ;               ; due to stuck port data_in ;                                        ;
 +---------------+---------------------------+----------------------------------------+
 
@@ -235,12 +292,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 344   ;
+; Total registers                              ; 203   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Synchronous Load   ; 1     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 326   ;
+; Number of registers using Clock Enable       ; 192   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -250,16 +307,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |Crossbar|slave_wdata[1][28]~reg0  ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 0 LEs                ; 96 LEs                 ; Yes        ; |Crossbar|slave_wdata[0][14]~reg0  ;
-; 4:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |Crossbar|slave_addr[1][17]~reg0   ;
-; 34:1               ; 32 bits   ; 704 LEs       ; 64 LEs               ; 640 LEs                ; Yes        ; |Crossbar|master_rdata[1][12]~reg0 ;
-; 4:1                ; 33 bits   ; 66 LEs        ; 0 LEs                ; 66 LEs                 ; Yes        ; |Crossbar|slave_addr[0][25]~reg0   ;
-; 34:1               ; 32 bits   ; 704 LEs       ; 64 LEs               ; 640 LEs                ; Yes        ; |Crossbar|master_rdata[0][29]~reg0 ;
-; 10:1               ; 31 bits   ; 186 LEs       ; 31 LEs               ; 155 LEs                ; Yes        ; |Crossbar|addr_0[2]                ;
-; 37:1               ; 2 bits    ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |Crossbar|pc2[5]                   ;
-; 10:1               ; 32 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |Crossbar|data_0[24]               ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Crossbar|master_rdata[0][22]~reg0 ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Crossbar|master_rdata[1][15]~reg0 ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |Crossbar|slave_addr[1][2]~reg0    ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |Crossbar|slave_addr[0][4]~reg0    ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |Crossbar|slave_wdata[1][19]~reg0  ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |Crossbar|slave_wdata[0][28]~reg0  ;
+; 4:1                ; 68 bits   ; 136 LEs       ; 136 LEs              ; 0 LEs                  ; No         ; |Crossbar|Mux33                    ;
+; 4:1                ; 68 bits   ; 136 LEs       ; 136 LEs              ; 0 LEs                  ; No         ; |Crossbar|Mux191                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Crossbar ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; count          ; 2     ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------+
@@ -268,28 +334,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Aug 24 10:26:57 2018
+    Info: Processing started: Fri Aug 31 08:28:51 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Crossbar -c Crossbar
 Info: Found 1 design units, including 1 entities, in source file crossbar.v
     Info: Found entity 1: Crossbar
 Info: Elaborating entity "Crossbar" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Crossbar.v(32): object "ack_1" assigned a value but never read
-Warning (10230): Verilog HDL assignment warning at Crossbar.v(217): truncated value with size 32 to match size of target (1)
-Warning (10762): Verilog HDL Case Statement warning at Crossbar.v(39): can't check case statement for completeness because the case expression has too many possible states
-Warning (10762): Verilog HDL Case Statement warning at Crossbar.v(251): can't check case statement for completeness because the case expression has too many possible states
+Warning (10762): Verilog HDL Case Statement warning at Crossbar.v(47): can't check case statement for completeness because the case expression has too many possible states
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "master_ack[0]" is stuck at VCC
+    Warning (13410): Pin "master_ack[1]" is stuck at VCC
+    Warning (13410): Pin "slave_addr[1][31]" is stuck at VCC
 Info: Timing-Driven Synthesis is running
-Info: 1 registers lost all their fanouts during netlist optimizations. The first 1 are displayed below.
-    Info: Register "rr[1]" lost all its fanouts during netlist optimizations.
-Info: Generated suppressed messages file C:/Projects/QuartusProjects/Crossbar/Crossbar.map.smsg
-Info: Implemented 934 device resources after synthesis - the final resource count might be different
+Info: Implemented 747 device resources after synthesis - the final resource count might be different
     Info: Implemented 199 input pins
     Info: Implemented 196 output pins
-    Info: Implemented 539 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Implemented 352 logic cells
+Info: Generated suppressed messages file C:/Projects/QuartusProjects/Crossbar/Crossbar.map.smsg
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 251 megabytes
-    Info: Processing ended: Fri Aug 24 10:27:01 2018
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Processing ended: Fri Aug 31 08:28:57 2018
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
 
 
 +------------------------------------------+
